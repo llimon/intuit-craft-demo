@@ -1,0 +1,44 @@
+version: '2'
+services:
+    tweetfeed-app:
+        image: tweetfeed
+        depends_on:
+          - "consul"
+          - "mysql"
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_CLOUD_CONSUL_HOST=consul
+            - SPRING_CLOUD_CONSUL_PORT=8500
+            - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/tweetfeed?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf8&useSSL=false
+        ports:
+            - 8081:8081
+    gateway-app:
+        image: gateway
+        depends_on:
+          - "consul"
+          - "mysql"
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_CLOUD_CONSUL_HOST=consul
+            - SPRING_CLOUD_CONSUL_PORT=8500
+            - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/gateway?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=utf8&useSSL=false
+        ports:
+            - 8080:8080
+
+    mysql:
+        image: mysql:5.7.18
+        environment:
+            - MYSQL_USER=root
+            - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+#            - MYSQL_DATABASE=tweetfeed
+        command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8
+            --explicit_defaults_for_timestamp
+
+    consul:
+        extends:
+            file: consul.yml
+            service: consul
+    consul-config-loader:
+        extends:
+            file: consul.yml
+            service: consul-config-loader
