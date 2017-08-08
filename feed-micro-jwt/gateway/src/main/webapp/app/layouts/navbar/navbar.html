@@ -32,6 +32,18 @@
                         </span>
                     </a>
                     <ul class="dropdown-menu" uib-dropdown-menu>
+                        <li ui-sref-active="active">
+                                <a ui-sref="tweet" ng-click="vm.collapseNavbar()">
+                                    <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                    <span>Tweet</span>
+                                </a>
+                            </li>
+                        <li ui-sref-active="active">
+                                <a ui-sref="tweet-author" ng-click="vm.collapseNavbar()">
+                                    <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
+                                    <span>Tweet Author</span>
+                                </a>
+                            </li>
                         <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
                     </ul>
                 </li>

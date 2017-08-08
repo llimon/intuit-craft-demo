@@ -1,0 +1,49 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "tweet",
+            "otherEntityName": "tweet",
+            "otherEntityRelationshipName": "createdBy"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "screenname",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "createdAt",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "profileImageUrl",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 1024
+        }
+    ],
+    "changelogDate": "20170808122232",
+    "javadoc": "TweetAuthor entity",
+    "entityTableName": "tweet_author",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "no",
+    "microserviceName": "tweetfeed"
+}

@@ -37,6 +37,9 @@ public class CacheConfiguration {
     @Bean
     public JCacheManagerCustomizer cacheManagerCustomizer() {
         return cm -> {
+            cm.createCache(com.intuit.tweetfeed.domain.Tweet.class.getName(), jcacheConfiguration);
+            cm.createCache(com.intuit.tweetfeed.domain.TweetAuthor.class.getName(), jcacheConfiguration);
+            cm.createCache(com.intuit.tweetfeed.domain.TweetAuthor.class.getName() + ".tweets", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }
