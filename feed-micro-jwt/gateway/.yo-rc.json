@@ -1,7 +1,8 @@
 {
   "generator-jhipster": {
     "promptValues": {
-      "packageName": "com.intuit.tweetfeed"
+      "packageName": "com.intuit.tweetfeed",
+      "microservicePath": "../app"
     },
     "jhipsterVersion": "4.6.2",
     "baseName": "gateway",

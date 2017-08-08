@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span>Tweet Author</span> {{vm.tweetAuthor.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Screenname</span></dt>
+        <dd>
+            <span>{{vm.tweetAuthor.screenname}}</span>
+        </dd>
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{vm.tweetAuthor.name}}</span>
+        </dd>
+        <dt><span>Created At</span></dt>
+        <dd>
+            <span>{{vm.tweetAuthor.createdAt | date:'medium'}}</span>
+        </dd>
+        <dt><span>Profile Image Url</span></dt>
+        <dd>
+            <span>{{vm.tweetAuthor.profileImageUrl}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="tweet-author-detail.edit({id:vm.tweetAuthor.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

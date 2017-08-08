@@ -1,0 +1,24 @@
+/** Tweet entity */
+entity Tweet {
+    tweetText String maxlength(140) required,
+    createdAt ZonedDateTime required,
+    lang String maxlength(5) required
+}
+
+/** TweetAuthor entity */
+entity TweetAuthor {
+    screenname String required,
+    name String required,
+    createdAt ZonedDateTime required,
+    profileImageUrl String maxlength(1024)
+}
+
+relationship OneToMany {
+  TweetAuthor{tweet} to Tweet{createdBy(screenname) required}
+}
+
+paginate Tweet with infinite-scroll
+
+dto * with mapstruct
+
+microservice * with tweetfeed
